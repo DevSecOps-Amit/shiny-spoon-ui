@@ -89,7 +89,7 @@ jobs:
     needs:
       - software-composition-analysis
       - code-quality-checks
-      - static-code-analysis:
+      - static-code-analysis
 
     steps:
       - name: Checkout code

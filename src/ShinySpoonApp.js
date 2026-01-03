@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Button, TextField, Container, Typography, Grid, Card, CardContent, IconButton } from '@mui/material';
 import { Delete } from '@mui/icons-material';
 import { Box } from '@mui/material';
+import { Grid } from '@mui/material';
 
 const API_BASE_URL = 'http://52.146.33.135:8000';
 
@@ -152,6 +153,15 @@ function ShinySpoonApp() {
             </Container>
         </Box>
     );
+}
+function ShinySpoonApp() {
+  return (
+    <Grid container>
+      <Grid item xs={12}>
+        Shiny Spoon App
+      </Grid>
+    </Grid>
+  );
 }
 
 export default ShinySpoonApp;

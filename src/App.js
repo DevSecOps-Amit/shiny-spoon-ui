@@ -1,10 +1,10 @@
 import React from 'react';
-import TodoApp from './TodoApp';
+import shiny-spoonApp from './shiny-spoonApp';
 
 function App() {
   return (
     <div className="App">
-      <TodoApp />
+      <shiny-spoonApp />
     </div>
   );
 }

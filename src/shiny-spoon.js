@@ -8,7 +8,7 @@ const API_BASE_URL = 'http://52.146.33.135:8000';
 
 const backgroundImage = process.env.PUBLIC_URL + '/background.jpg';
 
-function TodoApp() {
+function shiny-spoonApp() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState({ title: '', description: '' });
 
@@ -65,7 +65,7 @@ function TodoApp() {
                     }}
                 >
                     <img src="/devopsinsiderslogo.png" alt="My Logo" />
-                    ToDo App
+                    shiny-spoon App
                 </Typography>
                 <div>
                     <TextField
@@ -154,4 +154,4 @@ function TodoApp() {
     );
 }
 
-export default TodoApp;
+export default shiny-spoonApp;

@@ -1,4 +1,4 @@
-# Readme for Todo App 📝
+# Readme for shiny-spoon App 📝
 
 ### Installation 🚀
 
@@ -12,7 +12,7 @@
 ### Configuration ⚙️
 
 2. **Update Backend URL:**
-   - Open the `src/TodoApp.js` file.
+   - Open the `src/shiny-spoonApp.js` file.
    - Locate the variable storing the backend URL and update it with the appropriate value. (* See Below for PrivateIp Configuration)
 
 ### Building and Running 🏗️
@@ -65,7 +65,7 @@ Replace `<PrivateIP of BackendVM>` with the actual Private IP address of your Ba
 
 ### 3. Update Frontend Configuration ⚙️
 
-Open the `src/TodoApp.js` file in your frontend project.
+Open the `src/shiny-spoonApp.js` file in your frontend project.
 
 Update the Backend URL by replacing the existing line with the following:
 

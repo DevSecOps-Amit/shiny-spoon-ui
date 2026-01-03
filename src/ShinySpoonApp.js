@@ -8,7 +8,7 @@ const API_BASE_URL = 'http://52.146.33.135:8000';
 
 const backgroundImage = process.env.PUBLIC_URL + '/background.jpg';
 
-function shiny-spoonApp() {
+function ShinySpoonApp() {
     const [tasks, setTasks] = useState([]);
     const [newTask, setNewTask] = useState({ title: '', description: '' });
 
@@ -65,7 +65,7 @@ function shiny-spoonApp() {
                     }}
                 >
                     <img src="/devopsinsiderslogo.png" alt="My Logo" />
-                    shiny-spoon App
+                    shinyspoonApp
                 </Typography>
                 <div>
                     <TextField
@@ -154,4 +154,4 @@ function shiny-spoonApp() {
     );
 }
 
-export default shiny-spoonApp;
+export default ShinySpoonApp;

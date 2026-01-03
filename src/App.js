@@ -1,10 +1,10 @@
 import React from 'react';
-import shiny-spoonApp from './shiny-spoonApp';
+import ShinySpoonApp from './ShinySpoonApp';
 
 function App() {
   return (
     <div className="App">
-      <shiny-spoonApp />
+      <ShinySpoonApp />
     </div>
   );
 }

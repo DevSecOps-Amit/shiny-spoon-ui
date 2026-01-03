@@ -26,6 +26,25 @@ jobs:
           npm install
           retire --exitwith 0
 
+  static-code-analysis:
+    name: Static Code Analysis (SonarQube)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Run SonarQube Scan
+        env:
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: |
+          npm install -g sonar-scanner
+          sonar-scanner \
+            -Dsonar.host.url=${SONAR_HOST_URL} \
+            -Dsonar.login=${SONAR_TOKEN} \
+            -Dsonar.projectKey=shiny-spoon
+
   code-quality-checks:
     name: Code Quality & Linting
     runs-on: ubuntu-latest

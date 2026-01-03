@@ -1,0 +1,93 @@
+name: shiny-spoon UI CI Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+
+jobs:
+
+  software-composition-analysis:
+    name: Software Composition Analysis (Dependency Security)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: Run Dependency Security Scan (Retire.js)
+        run: |
+          npm install -g retire
+          npm install
+          retire --exitwith 0
+
+  code-quality-checks:
+    name: Code Quality & Linting
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: JavaScript Linting (Biome)
+        continue-on-error: true
+        run: |
+          curl -L https://github.com/biomejs/biome/releases/download/%40biomejs%2Fbiome%402.3.8/biome-linux-x64 -o biome
+          chmod +x biome
+          ./biome lint src/
+
+      - name: CSS Linting (Stylelint)
+        continue-on-error: true
+        run: |
+          npm install -g stylelint stylelint-config-standard
+          stylelint src --config stylelint.config.mjs
+
+      - name: YAML Linting (yamllint)
+        continue-on-error: true
+        run: |
+          pip install yamllint
+          yamllint .
+
+      - name: Markdown Linting (markdownlint)
+        continue-on-error: true
+        run: |
+          npm install -g markdownlint-cli
+          markdownlint .
+
+  build-and-package:
+    name: Build & Artifact Packaging
+    runs-on: ubuntu-latest
+    needs:
+      - software-composition-analysis
+      - code-quality-checks
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 16
+
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build Application
+        run: npm run build
+
+      - name: Publish Build Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: shiny-spoon-ui
+          path: build/
